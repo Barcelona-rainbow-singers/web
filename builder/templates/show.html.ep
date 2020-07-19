@@ -30,6 +30,10 @@
               <div id="menu">
                 <ul>
                   <li><a href="/">Portada</a></li>
+                % for my $page ( @$pages ) {
+                %   next if $page->{meta}{hidden};
+                  <li><a href="/<%= $page->{slug} %>"><%= $page->{meta}{title} %></a></li>
+                % }
                   <li><a href="/#/schedule">Shows</a></li>
                 </ul>
               </div>

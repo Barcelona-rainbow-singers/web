@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= $meta->{title} %> - Barcelona Rainbow Singers</title>
+    <title>Prensa - Barcelona Rainbow Singers</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/static/css/main.css">
@@ -9,10 +9,10 @@
     <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta property="og:site_name" content="Barcelona Rainbow Singers"/>
-    <meta property="og:title" content="<%= $meta->{title} %> - Barcelona Rainbow Singers"/>
-    <meta property="og:url" content="https://barcelonarainbowsingers.org/<%= $slug %>/"/>
-    <meta property="og:description" content="<%= $meta->{description} %>"/>
-    <meta property="og:image" content="https://barcelonarainbowsingers.org<%= $meta->{share_img} || '/static/img/share-social.jpg' %>"/>
+    <meta property="og:title" content="Prensa - Barcelona Rainbow Singers"/>
+    <meta property="og:url" content="https://barcelonarainbowsingers.org/prensa/"/>
+    <meta property="og:description" content="Descarga el dossier de Barcelona Rainbow Singers"/>
+    <meta property="og:image" content="https://barcelonarainbowsingers.org/static/img/share-social.jpg"/>
     <meta property="og:locale" content="es_ES"/>
   </head>
   <body class="is-preload">
@@ -26,10 +26,13 @@
               <div id="menu">
                 <ul>
                   <li><a href="/">Portada</a></li>
-                % for my $page ( @$pages ) {
-                %   next if $page->{meta}{hidden};
-                  <li><a href="/<%= $page->{slug} %>"><%= $page->{meta}{title} %></a></li>
-                % }
+                  <li><a href="/apoyanos">Apóyanos</a></li>
+                  <li><a href="/contacto">Contacto</a></li>
+                  <li><a href="/el-coro">El Coro</a></li>
+                  <li><a href="/faqs">FAQS</a></li>
+                  <li><a href="/pagina-de-prueba">Una página de prueba</a></li>
+                  <li><a href="/prensa">Prensa</a></li>
+                  <li><a href="/unete">Únete</a></li>
                   <li><a href="/#/schedule">Shows</a></li>
                 </ul>
               </div>
@@ -40,13 +43,16 @@
 
       <article id="main">
         <header>
-          <h2><%= $meta->{title} || $slug %></h2>
-          <p><%= $meta->{description} || '' %></p>
+          <h2>Prensa</h2>
+          <p>Descarga el dossier de Barcelona Rainbow Singers</p>
         </header>
         <section class="wrapper style5">
           <div class="inner">
             <section>
-              <%= $body %>
+              <h3>Dossier de prensa</h3>
+
+<h3>Fotos</h3>
+
             </section>
           </div>
         </section>

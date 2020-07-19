@@ -13,7 +13,7 @@ my $content_dir  = Mojo::File->new("$FindBin::Bin/../content/");
 my $images_dir   = $content_dir->child('image/');
 
 my $shows = read_source('show');
-my $pages = read_source('page');
+my $pages = read_source('page')->sort(sub{ ($a->{meta}{order}||100) <=> ($b->{meta}{order}||100)});
 
 build_shows($shows, $pages);
 build_pages($pages, $shows);
@@ -56,7 +56,7 @@ sub build_pages($pages, $shows) {
 
         my $dest = $dest_dir->child('index.html');
         say ' - ', $e->{slug};
-        $dest->spurt(encode 'UTF8', $template->process({ %$e, shows => $shows }));
+        $dest->spurt(encode 'UTF8', $template->process({ %$e, shows => $shows, pages => $pages }));
     });
 }
 
