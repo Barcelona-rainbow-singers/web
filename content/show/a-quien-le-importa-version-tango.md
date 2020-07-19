@@ -1,9 +1,9 @@
-title: Nuestra version de Tusa 
-description: Durante la cuarentena por el Covid-19 hemos hecho nuestra version la esta famosa canción de Tusa
-at: 14/05/2020 20:00
-duration: 75
+title: A quien le importa version tango
+description: Durante la cuarentena por el Covid-19 hemos hecho nuestra version tango de esta famosa canción.
+at: 25/06/2020 18:00
+duration: 5
 peers: Algunos miembros de BRS
-youtube: LtoDTDPeEsc
+youtube: cBI7ShO1Qzw
 ----
 ### El título que querais poner
 
