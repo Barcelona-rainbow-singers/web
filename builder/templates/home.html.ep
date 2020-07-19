@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BRS - Barcelona Rainbow Singers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/custom.css">
+    <noscript><link rel="stylesheet" href="/static/css/noscript.css" /></noscript>
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:site_name" content="BRS"/>
+    <meta property="og:title" content="Barcelona Rainbow Singlers"/>
+    <meta property="og:url" content="https://barcelonarainbowsingers.org"/>
+    <meta property="og:description" content="Primera coral LGTBIQ de España yada yada para redes sociales"/>
+    <meta property="og:image" content="https://barcelonarainbowsingers.org/static/img/share-social.jpg"/>
+    <meta property="og:locale" content="es_ES"/>
+  </head>
+  <body class="landing is-preload">
+    <div id="page-wrapper">
+
+      <header id="header" class="alt">
+        <h1><a href="/">Barcelona Rainbow Singers</a></h1>
+        <nav id="nav">
+          <ul>
+            <li class="special">
+              <a href="#menu" class="menuToggle"><span>Menu</span></a>
+              <div id="menu">
+                <ul>
+                  <li><a href="/">Portada</a></li>
+                % for my $page ( @$pages ) {
+                  <li><a href="/<%= $page->{slug} %>"><%= $page->{meta}{title} %></a></li>
+                % }
+                  <li><a href="/#/schedule">Shows</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <section id="banner">
+        <div class="inner">
+          <h2>Barcelona Rainbow Singers</h2>
+          <p>Cantando por la diversidad</p>
+        </div>
+      </section>
+
+      <section id="/presentation" class="wrapper style1 special">
+        <div class="inner">
+          <header class="major">
+            <h2>Una coral LGTBIQ+ a cuatro voces</h2>
+            <p>
+              <b class="block">
+                  Aquí un resumen del quienes somos con enlace a la pagina de quienes somos y la historia.
+              </b>
+            </p>
+          </header>
+        </div>
+      </section>
+
+      <section id="/venue" class="wrapper style2 special">
+        <div class="inner">
+          <header class="major">
+            <p>TODO: aqui vamos a poner unas fotos mas del coro </p>
+          </header>
+        </div>
+      </section>
+
+      <section id="/schedule" class="wrapper style3 special">
+        <div class="inner">
+          <header class="major">
+            <h2>Shows</h2>
+            <p>TODO: aquí pondremos un texto introduciendo los próximos shows que saldrán aqui abajo. Tambien podriamos poner shows pasados que al entrar en la página podrian tener el video en youtube para que nos vean. Otra idea podría ser poner nuestros videos de youtube (tusa, a quien le importa, ....) como eventos/shows.</p>
+          </header>
+
+        % for my $day ( $days->@* ) {
+          <table id="schedule">
+            <thead>
+              <tr class="header">
+                <th></th>
+                <th>
+                  <%= ucfirst $day->{date}->day_name %> <%= $day->{date}->day %> de <%= $day->{date}->month_name %>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            % my $count = 0;
+            % for my $event ( $day->{shows}->@* ) {
+              <tr>
+                  <td class="time" data-start="<%= $event->{meta}{start_at}->clone->set_time_zone('UTC')->epoch %>" data-end="<%= $event->{meta}{end_at} && $event->{meta}{end_at}->clone->set_time_zone('UTC')->epoch %>" >
+                % my $time = $event->{meta}{start_at}->hms;
+                % $time =~ s/:00$//;
+                  <%= $time %>
+                % if ( my $end = $event->{meta}{end_at} ) {
+                % $time = $end->hms;
+                % $time =~ s/:00$//;
+                  <br/><%= $time %>
+                % }
+                </td>
+              % if ( $event->{meta}{featured} ) {
+                <td class="room room-venue time-<%= $event->{meta}{duration} || 60 %>">
+              % } else {
+                <td class="room room-<%= $count++ % 2 %> time-<%= $event->{meta}{duration} || 60 %>">
+              % }
+                  <div class="title">
+                    <a href="/show/<%= $event->{slug} %>/"><%= $event->{meta}{title} %></a>
+                  </div>
+                  <div class="author"><%= $event->{meta}{peers} || '' %></div>
+                </td>
+              </tr>
+          % }
+            </tbody>
+          </table>
+        % }
+        </div>
+      </section>
+
+      <footer id="footer">
+        <ul class="icons">
+          <li><a href="https://www.facebook.com/barcelonarainbowsingers/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/barcelonarainbowsingers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="https://www.youtube.com/channel/UCDWwOrIPe_B2e5ZyJfoFKwA" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
+          <li><a href="https://twitter.com/coralBRS" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="mailto:hola@barcelonarainbowsingers.org" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>2010 - 2020 diez años cantando por la diversidad.</li>
+        </ul>
+      </footer>
+
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.scrollex.min.js"></script>
+    <script src="/static/js/jquery.scrolly.min.js"></script>
+    <script src="/static/js/browser.min.js"></script>
+    <script src="/static/js/breakpoints.min.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

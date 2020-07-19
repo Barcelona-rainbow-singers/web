@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= $meta->{title} %> - Barcelona Rainbow Singers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/css/main.css">
+    <noscript><link rel="stylesheet" href="/static/css/noscript.css" /></noscript>
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:site_name" content="Barcelona Rainbow Singers"/>
+    <meta property="og:title" content="<%= $meta->{title} %> - Barcelona Rainbow Singers"/>
+    <meta property="og:url" content="https://barcelonarainbowsingers.org/show/<%= $slug %>/"/>
+    <meta property="og:description" content="<%= $meta->{description} %>"/>
+    <meta property="og:image" content="https://barcelonarainbowsingers.org<%= $meta->{share_img} || '/static/img/share-social.jpg' %>"/>
+    <meta property="og:locale" content="es_ES"/>
+  % if ( my $start = $meta->{start_at} ) {
+    <meta property="og:type" content="event"/>
+    <meta property="event:start_time" content="<%= $meta->{start_at} && $meta->{start_at}->clone->set_time_zone('UTC')->stringify .'Z' %>"/>
+  % }
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper">
+      <header id="header">
+        <h1><a href="/">Barcelona Rainbow Singers</span></a></h1>
+        <nav id="nav">
+          <ul>
+            <li class="special">
+              <a href="#menu" class="menuToggle"><span>Menu</span></a>
+              <div id="menu">
+                <ul>
+                  <li><a href="/">Portada</a></li>
+                  <li><a href="/#/schedule">Shows</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <article id="main">
+        <div class="event-head">
+          <div class="stream">
+          % if ( my $id = $meta->{youtube} ) {
+            <div class="video-container" style="display:none;">
+              <iframe src="https://www.youtube.com/embed/<%= $id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          % }
+            <div class="video-placeholder">
+              <p><i class="fab fa-youtube"></i></p>
+              <p id="starts-in">El streaming no ha comenzado aún...</p>
+            </div>
+          </div>
+          <div class="info">
+            <h2><%= $meta->{title} %></h2>
+            % if ( my $start = $meta->{start_at} ) {
+            <p>
+              % my $time = $start->hms;
+              % $time =~ s/:00$//;
+              % $time .= ' a '. $meta->{end_at}->hms if $meta->{end_at};
+              % $time =~ s/:00$//;
+              <i class="far fa-calendar"></i> <span id="event-day-name"><%= ucfirst $start->day_name %></span> <span id="event-day"><%= $start->day %></span> de <%= $start->month_name %><br/>
+              <i class="far fa-clock"></i> <span id="event-time"><%= $time %></span>
+            % if ( my $peers = $meta->{peers} ) {
+              <br/><br/><i class="far fa-user"></i> <%= $peers %>
+            % }
+            </p>
+            % } elsif ( my $at = $meta->{at} ) {
+            <p>
+              <i class="far fa-calendar"></i> <%= $at %>
+            % if ( my $peers = $meta->{peers} ) {
+              <br/><br/><i class="far fa-user"></i> <%= $peers %>
+            % }
+            </p>
+            % }
+            <p><%= $meta->{description} %></p>
+          </div>
+        </div>
+        <section class="wrapper style5">
+          <div class="inner">
+            <section>
+              <%= $body %>
+            </section>
+          </div>
+        </section>
+      </article>
+
+      <footer id="footer">
+        <ul class="icons">
+          <li><a href="https://www.facebook.com/barcelonarainbowsingers/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/barcelonarainbowsingers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="https://www.youtube.com/channel/UCDWwOrIPe_B2e5ZyJfoFKwA" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
+          <li><a href="https://twitter.com/coralBRS" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="mailto:hola@barcelonarainbowsingers.org" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+          <li>2010 - 2020 diez años cantando por la diversidad.</li>
+        </ul>
+      </footer>
+
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.scrollex.min.js"></script>
+    <script src="/static/js/jquery.scrolly.min.js"></script>
+    <script src="/static/js/browser.min.js"></script>
+    <script src="/static/js/breakpoints.min.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/main.js"></script>
+    % if ( $meta->{start_at} && $meta->{end_at} ) {
+    <script>
+        function formatTime(date) {
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          hours   = hours < 10 ? '0'+hours : hours;
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          return hours + ':' + minutes;
+        }
+        function inSeconds(date) { return parseInt( ( date.getTime() - (new Date()).getTime() ) / 1000 ) }
+
+        function humanTimer(date) {
+            var secs = inSeconds(date);
+
+            if ( secs < 30 ) return;
+            if ( secs < 60 ) return "El streaming está por comenzar...";
+
+            var days = parseInt(secs/86400);
+            secs = secs % 86400;
+            var hours = parseInt(secs/3600);
+            secs = secs % 3600;
+            var mins = parseInt(secs/60);
+            secs = secs % 60;
+
+            var out = "El streaming comienza en";
+            if ( days ) {
+                out = out + ` ${days} ${ days > 1 ? 'días' : 'día' }`;
+                if ( hours && mins ) {
+                    out = out + `, ${hours} ${ hours > 1 ? 'horas' : 'hora' } y ${mins} ${ mins > 1 ? 'minutos' : 'minuto' }`;
+                }
+                else if ( hours ) {
+                    out = out + ` y ${hours} ${ hours > 1 ? 'horas' : 'hora' }`;
+                }
+                else if ( mins ) {
+                    out = out + ` y ${mins} ${ mins > 1 ? 'minutos' : 'minuto' }`;
+                }
+            }
+            else if ( hours ) {
+                out = out + ` ${hours} ${ hours > 1 ? 'horas' : 'hora' }`;
+                if ( mins ) {
+                    out = out + ` y ${mins} ${ mins > 1 ? 'minutos' : 'minuto' }`;
+                }
+            }
+            else {
+                out = out + ` ${mins} ${ mins > 1 ? 'minutos' : 'minuto' }`;
+                if ( secs ) {
+                    out = out + ` y ${secs} ${ secs > 1 ? 'segundos' : 'segundo' }`;
+                }
+            }
+
+            return out + '...';
+        }
+        function updateVideoCountdown(startDate, endDate) {
+            var startIn = humanTimer(startDate);
+            if ( startIn ) {
+                $('#starts-in').html(startIn);
+                setTimeout(function(){ updateVideoCountdown(startDate, endDate) }, inSeconds(startDate) > 3600 ? 6000 : 1000 );
+            }
+            else {
+                $(".video-container").show();
+                $(".video-placeholder").hide();
+                if ( inSeconds(endDate) < 0 ) $(".join-to-demio").hide();
+            }
+        }
+
+        $(function(){
+            var startDate = new Date(<%= $meta->{start_at}->clone->set_time_zone('UTC')->epoch * 1000 %>);
+            var endDate   = new Date(<%= $meta->{end_at}->clone->set_time_zone('UTC')->epoch * 1000 %>);
+            var days = { 0: "Domingo", 1: "Lunes", 2: "Martes", 3: "Miércoles", 4: "Jueves", 5: "Viernes", 6: "Sábado" };
+            $("#event-day-name").html( days[ startDate.getDay() ] );
+            $("#event-day").html( startDate.getDate() );
+            $("#event-time").html(`${formatTime(startDate)} a ${formatTime(endDate)}`);
+            updateVideoCountdown(startDate, endDate);
+        });
+    </script>
+    % }
+  </body>
+</html>
