@@ -4,4 +4,4 @@ order: 6
 ----
 ### Nuestro Correo
 
-hola@barcelonarainbowsingers.org
+¡Escríbenos! hola@barcelonarainbowsingers.org
