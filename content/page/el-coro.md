@@ -1,5 +1,6 @@
 title: El Coro
 description: Somos la primera coral LGTBIQ+ de la península.
+order: 1
 ----
 ### ¿Quienes somos?
 

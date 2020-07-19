@@ -1,5 +1,6 @@
 title: FAQS
 description: Todo lo que tienes que saber de Barcelona Rainbow Singers
+order: 3
 ----
 ### ¿Dónde ensayamos?
 
