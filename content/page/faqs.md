@@ -1,5 +1,5 @@
 title: FAQS
-description: Todo lo que tienes que saber de Barcelona Rainbow Singers
+description: Todo lo que tienes que saber sobre Barcelona Rainbow Singers
 order: 3
 ----
 ### ¿Dónde ensayamos?
@@ -10,7 +10,7 @@ Debido a cuestiones de salud pública, nos encontramos buscando una nueva casa c
 ### ¿Cuándo se hacen las audiciones? ¿Cómo es el proceso?
 
 Las audiciones se realizan a principios de septiembre y de enero; pero estamos abiertos a nuevxs cantantes todo el año.
-Nos escribes y quedamos en nuestra sala de ensayo. Puedes traer preparada una pieza que quieras cantar, nosotros   
+Nos escribes y quedamos en nuestra sala de ensayo. Puedes traer preparada una pieza que quieras cantar, nosotros te ofreceremos otra.   
 
 ### ¿Cómo se llevan los ensayos en situación de COVID?
 
