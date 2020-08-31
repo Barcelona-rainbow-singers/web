@@ -8,5 +8,3 @@ youtube: S1aZmiVnwZs
 
 El Medley de coplas es parte de nuestro espectáculo Rainbow! *Viva la Vida*
 Puedes verlo entero aquí:[Viva la vida](https://www.youtube.com/playlist?list=PLqzeZeLDH880c1kwiSM13bxrbHCouPWnI)
-
-###FOTOS

@@ -8,6 +8,3 @@ youtube: cBI7ShO1Qzw
 
 Las medidas de confinamiento se relajaron apenas después de la salida de “Tusa” y se acercaba el PRIDE. ¿Qué podíamos hacer? Todas las cuerdas venían preparando "AQLI" con el arreglo local original de Josep Anton y pensamos que era ideal.
 Pedimos colaboración de los cantaires para que aportaran su talento bailando, haciendo ropa, etc. Durante la grabación, algunos cantantes volvimos a encontrarnos después de tres meses, entonces vivimos todo el proceso con mucha alegría. ¡Queríamos poder estar juntos y festejar!
-
-
-###FOTOS

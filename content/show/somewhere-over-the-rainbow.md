@@ -8,5 +8,3 @@ youtube: NFgsWtLFtIY
 
 "Somewhere over the rainbow" es parte de nuestro espectáculo *Rainbow!Històries del cor*
 Puedes verlo entero aquí: [Rainbow!Històries del cor](https://www.youtube.com/playlist?list=PLqzeZeLDH880xjmfeD_KXE1apm2LIRIUf)
-
-###FOTOS
