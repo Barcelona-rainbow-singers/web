@@ -1,8 +1,7 @@
 title: This is me
 description: Parte de nuestro espectáculo Viva la Vida!
-at: 12/07/2019
-duration: 8:03
-peers:
+at: 12/07/2019 18:00
+duration: 8
 youtube: ttuxqFzbBJo
 ----
 ### ¿Cómo lo hicimos?

@@ -1,8 +1,7 @@
 title: Somewhere over the rainbow
 description: Parte de nuestro espectáculo Rainbow! Històries del cor
-at: 12/07/2018
-duration: 8:03
-peers:
+at: 12/07/2018 18:00
+duration: 8
 youtube: NFgsWtLFtIY
 ----
 ### ¿Cómo lo hicimos?

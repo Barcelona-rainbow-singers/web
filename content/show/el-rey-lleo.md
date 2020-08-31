@@ -1,8 +1,7 @@
 title: Medley El Rey Lleó 
 description: Parte de nuestro espectáculo Move it!
-at: 12/07/2016
-duration: 8:03
-peers:
+at: 12/07/2016 18:00
+duration: 8
 youtube: crUHlq_sUBI
 ----
 ### ¿Cómo lo hicimos?

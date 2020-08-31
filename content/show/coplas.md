@@ -1,8 +1,7 @@
 title: Medley Coplas
 description: Parte de nuestro espectáculo Viva la Vida!
-at: 12/07/2017
-duration: 8:03
-peers:
+at: 12/07/2017 18:00
+duration: 8
 youtube: S1aZmiVnwZs
 ----
 ### ¿Cómo lo hicimos?
